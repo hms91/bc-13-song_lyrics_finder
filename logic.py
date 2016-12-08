@@ -33,13 +33,12 @@ class FindLyrics(object):
 		this_song = session.query(SongDetails).get(song_id)
 
 		if this_song is not None:
-			print "We have data"
 			song_details['song_id'] = this_song.song_id
 			song_details['song_name'] = this_song.song_name
 			song_details['song_lyrics'] = this_song.song_lyrics.encode('utf-8')
 		
 		else:
-			search_for = song_id
+			search_for = int(song_id)
 			data = {'q': search_for}
 			try:
 				response = requests.get(self.search_url, data=data, headers=self.headers)
@@ -104,10 +103,12 @@ class FindLyrics(object):
 
 song = FindLyrics()
 this_one = "PowerTrip"
-id = 118063
-print song.FindLyrics(this_one)
-print song.view_by_id(id)
-song.save_song(id)
+# id =  91686
+print song.find(this_one)
+# print song.view_by_id(id)
+# song.save_song(id)
 
-print session.query(SongDetails.song_id, SongDetails.song_name, SongDetails.song_lyrics).first()
-song.clear()
+# print session.query(SongDetails.song_id, SongDetails.song_name, SongDetails.song_lyrics).first()
+# song.clear()
+
+# print song.view_by_id(id)

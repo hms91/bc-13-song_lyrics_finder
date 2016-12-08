@@ -7,7 +7,7 @@ Base = declarative_base()
 
 class DbObject(object):
 	def __init__(self):
-		self.engine = create_engine('sqlite:///:memory:')
+		self.engine = create_engine('sqlite:///song_db.db')
 		Base.metadata.create_all(self.engine)
 
 	def start_session(self):
