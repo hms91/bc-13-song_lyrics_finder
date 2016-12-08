@@ -24,11 +24,5 @@ class DbObject(object):
 class SongDetails(Base):
 	__tablename__ = 'songdetails'
 	song_id = Column(Integer, primary_key=True)
-	artist_id = Column(Integer, ForeignKey('artistdetails.artist_id'))	
 	song_name = Column(String(40))
 	song_lyrics = Column(UnicodeText(64))
-
-class ArtistDetails(Base):
-	__tablename__ = 'artistdetails'
-	artist_id = Column(Integer, primary_key=True)
-	artist_name = Column(String(40))
